@@ -1,10 +1,9 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-console */
 import React, { Component } from 'react';
-
-import { FaEdit, FaWindowClose } from 'react-icons/fa';
 import './Main.css';
 import Form from './Form';
+import List from './Tarefas';
 
 export default class Main extends Component {
   state = {
@@ -93,20 +92,13 @@ export default class Main extends Component {
           handleChange={this.handleChange}
           novaTarefa={novaTarefa}
         />
-        <ul className="list">
-          {
-            Tarefas.map((tarefa, index) => (
-              <li key={tarefa}>
-                {tarefa}
-                <span>
-                  <FaEdit onClick={(e) => this.handleEdit(e, index)} className="edit" />
-                  <FaWindowClose onClick={(e) => this.handleDelete(e, index)} className="delete" />
-                </span>
-              </li>
 
-            ))
-          }
-        </ul>
+        <List
+          Tarefas={Tarefas}
+          handleEdit={this.handleEdit}
+          handleDelete={this.handleDelete}
+        />
+
       </div>
     );
   }
