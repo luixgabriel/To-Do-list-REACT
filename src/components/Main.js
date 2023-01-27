@@ -2,8 +2,9 @@
 /* eslint-disable no-console */
 import React, { Component } from 'react';
 
-import { FaPlus, FaEdit, FaWindowClose } from 'react-icons/fa';
+import { FaEdit, FaWindowClose } from 'react-icons/fa';
 import './Main.css';
+import Form from './Form';
 
 export default class Main extends Component {
   state = {
@@ -87,13 +88,11 @@ export default class Main extends Component {
     return (
       <div className="main">
         <h1>Lista de Tarefas:</h1>
-
-        <form onSubmit={this.handleSubmit} action="#" className="form">
-          <input onChange={this.handleChange} type="text" value={novaTarefa} />
-          <button type="submit">
-            <FaPlus />
-          </button>
-        </form>
+        <Form
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          novaTarefa={novaTarefa}
+        />
         <ul className="list">
           {
             Tarefas.map((tarefa, index) => (
